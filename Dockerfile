@@ -1,4 +1,5 @@
 FROM node:21-alpine3.18
 
-WORKDIR /home/node
-RUN npm install -g @vue/cli
+COPY app /home/app
+WORKDIR /home/app
+RUN npm install .

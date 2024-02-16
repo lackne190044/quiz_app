@@ -1,11 +1,21 @@
 version: "3"
 
 services:
-  vueapp:
+  app:
     build: .
     volumes:
-      - ./vueapp:/home/node/vueapp
+      - ./app:/home/app
     ports:
       - "8080:8080"
-    working_dir: /home/node/vueapp
-    command: npm run serve
+    working_dir: /home/app
+    command: npm run serve --dev
+    depends_on:
+      - api
+
+  api:
+    build: api
+    volumes:
+      - ./api:/home/api
+    ports:
+      - "5000:5000"
+    command: python /home/api/api.py
