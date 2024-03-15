@@ -1,53 +1,51 @@
-<script lang="ts">
+<script setup lang="ts">
 import { defineComponent } from 'vue'
 import Grid from './components/Grid.vue'
+import Jeoparty from './components/Jeoparty.vue'
+import Question  from './components/Question.vue'
+</script>
+
+<script lang="ts">
 import axios from 'axios'
 
-export default defineComponent({
+export default {
   data() {
     return {
-      values: [] as bigint[][],
-      api: 'http://api:5000/',
-      info: 'info'
-    };
+      values: [[1,2,3],[1,2,3],[1,2,2]],
+      info: 'info',
+      api: 'api',
+    }
   },
   mounted() {
+    // @ts-ignore
     this.getValues().then((data) => {
+      // @ts-ignore
       this.values = data
-    })
+    }) 
   },
   methods: {
     getValues() {
-      const promise = new Promise<bigint[][]>((accept, reject) => {
-        
+      // @ts-ignore
+      const api = this.api
+      const promise = new Promise<number[][]>((accept, reject) => {
         axios
-        .get(this.api + 'values')
-        .then((result) => {
-          accept(result.data)
-        })
-        .catch((error) => {
-          this.info = error
-          reject(error)
-        })
+          .get(api + 'values')
+          .then((result) => {
+            accept(result.data)
+          })
+          .catch((error) => {
+            // @ts-ignore
+            this.info = error
+            reject(error)
+          })
       })
       return promise
     }
   }
-});
+};
 </script>
 
 <template>
   {{ info }}
-  <br>
-  {{ values }}
-  <h1>
-    <Grid :values="values" />
-  </h1>
-  <button @onclick="getValues">get</button>
+  <Grid :values="values" />
 </template>
-
-<style>
-.grid-container {
-  display: grid;
-}
-</style>

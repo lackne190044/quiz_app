@@ -7,13 +7,12 @@
 </script>
 
 <template>
-    {{ values }}
     <div class="grid-container">
-        <div v-for="valueList in values">
-            <div v-for="value in valueList">
-                <div class="grit-item">{{ value }}</div>
-            </div>
-        </div>
+        <tr v-for="valueList in values">
+            <th v-for="value in valueList">
+                {{ value }}
+            </th>
+        </tr>
     </div>
 </template>
 

@@ -1,4 +1,12 @@
-import { createApp } from 'vue'
-import App from './App.vue'
+import { compile, createApp } from 'vue'
+import 'bootstrap'
 
-createApp(App).mount('#app')
+import { createPinia } from 'pinia'
+
+import App from '@/App.vue'
+
+const app = createApp(App)
+
+app.use(createPinia())
+
+app.mount('#app')

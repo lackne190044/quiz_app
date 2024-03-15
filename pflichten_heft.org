@@ -1,0 +1,10 @@
+* Pflichtenheft
+
+* Quiz App
+
+** Functionality
+
+- Possibility to add questions to postgres
+- Get questions out of postgresql
+- Question Types: Buzzer, Multiple Choice, Input Field
+- Should be able to lock participants from answering

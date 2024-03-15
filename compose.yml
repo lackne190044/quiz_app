@@ -8,14 +8,23 @@ services:
     ports:
       - "8080:8080"
     working_dir: /home/app
-    command: npm run serve --dev
+    command: npm run serve --include=dev
     depends_on:
       - api
 
   api:
-    build: api
+    build: ./api
     volumes:
       - ./api:/home/api
+    working_dir: /home/api
+    command: python api.py
+
+  nginx:
+    image: nginx:latest
     ports:
-      - "5000:5000"
-    command: python /home/api/api.py
+      -  "80:80"
+    volumes:
+      -  ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      -  app
+      -  api
