@@ -11,25 +11,22 @@ import axios from 'axios'
 export default {
   data() {
     return {
-      values: [[1,2,3],[1,2,3],[1,2,2]],
+      categories: Array<string>(),
       info: 'info',
-      api: 'api',
     }
   },
   mounted() {
     // @ts-ignore
-    this.getValues().then((data) => {
+    this.getcategories().then((data) => {
       // @ts-ignore
-      this.values = data
+      this.categories = data
     }) 
   },
   methods: {
-    getValues() {
-      // @ts-ignore
-      const api = this.api
-      const promise = new Promise<number[][]>((accept, reject) => {
+    getcategories() {
+      const promise = new Promise<string[]>((accept, reject) => {
         axios
-          .get(api + 'values')
+          .get('/api/categories')
           .then((result) => {
             accept(result.data)
           })
@@ -46,6 +43,5 @@ export default {
 </script>
 
 <template>
-  {{ info }}
-  <Grid :values="values" />
+  <Jeoparty></Jeoparty>
 </template>

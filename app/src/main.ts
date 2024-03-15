@@ -1,5 +1,6 @@
 import { compile, createApp } from 'vue'
 import 'bootstrap'
+import "./scss/custom.scss"
 
 import { createPinia } from 'pinia'
 

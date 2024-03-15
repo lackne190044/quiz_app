@@ -9,9 +9,9 @@ app = FastAPI()
 def root():
     return "Hello World"
 
-@app.get("/values")
-def getValues() -> list[list[int]]:
-    return [[x for x in range(3)] for _ in range(3)]
+@app.get("/categories")
+def getValues() -> list[str]:
+    return ["Buzzer", "Estimate", "Multiple Choice", "tmp1", "tmp2"]
 
 
 if __name__ == "__main__":
