@@ -43,5 +43,5 @@ export default {
 </script>
 
 <template>
-  <Jeoparty></Jeoparty>
+  <Jeoparty :categories="categories" />
 </template>

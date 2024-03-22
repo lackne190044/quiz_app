@@ -11,8 +11,8 @@ def root():
 
 @app.get("/categories")
 def getValues() -> list[str]:
-    return ["Buzzer", "Estimate", "Multiple Choice", "tmp1", "tmp2"]
+    return ["Buzzer", "Estimate", "Multiple Choice", "chat", "tmp1"]
 
 
 if __name__ == "__main__":
-    uvicorn.run("api:app", port=5000, host="0.0.0.0")
+    uvicorn.run("api:app", port=5000, host="0.0.0.0", reload=True)

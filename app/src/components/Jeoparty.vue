@@ -13,7 +13,7 @@
 	<div v-for="(item, index) in categories">
 		<div :class=" 'kat' + index">{{ item }}</div>
 	</div>
-  	<div class="item1"><button class="button blue">	question</button></div>
+  	<div class="item1"><a class="button blue" href="/question">	question</a></div>
 	<div class="item2"><button class="button blue">	question</button></div>
 	<div class="item3"><button class="button blue">	question</button></div>
 	<div class="item4"><button class="button blue">	question</button></div>
