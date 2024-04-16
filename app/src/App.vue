@@ -43,5 +43,5 @@ export default {
 </script>
 
 <template>
-  <Jeoparty :categories="categories" />
+  <RouterView />
 </template>

@@ -7,6 +7,10 @@ services:
       - ./app:/home/app
     working_dir: /home/app
     command: npm run serve --include=dev
+    environment:
+        __VUE_PROD_DEVTOOLS__: "true"
+        __VUE_OPTIONS_API__: "true"
+        __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: "true"
     depends_on:
       - api
 
@@ -26,3 +30,12 @@ services:
     depends_on:
       -  app
       -  api
+
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
